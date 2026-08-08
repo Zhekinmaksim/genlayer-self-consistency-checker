@@ -143,6 +143,26 @@ All seven pass. This does **not** test consensus - cross-validator agreement is
 what hosted Studio exercises, and `TEST_PLAN.md` lists what was run there and
 what was not. Full live LLM adjudication is not simulated offline.
 
+## Hosted Studio verification
+
+Checked in hosted GenLayer Studio on 2026-08-08.
+
+- Deployment finalized:
+  `0xE10A9D1066280F639684171f17E374F81185fCf6`
+- Explorer:
+  `https://explorer-studio.genlayer.com/address/0xE10A9D1066280F639684171f17E374F81185fCf6`
+- Deploy transaction:
+  `0x92041494f8ebb23e312938690a5b0c8711f88c187432c0730a27489397fb9647`
+- Studio schema loaded with the hosted runner header:
+  `# v0.2.16` and
+  `py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6`.
+
+The hosted Studio runner accepted this header at schema/deploy time. The current
+SDK docs describe the newer `v0.3.0-rc7` runner, so a future migration should be
+mechanical: update the dependency header and re-check event/schema generation.
+The deployment verification is ABI/schema and deployment finality only; full
+live LLM adjudication was not simulated.
+
 ## Layout
 
 ```

@@ -1,5 +1,5 @@
-# v0.3.0-rc7
-# { "Depends": "py-genlayer:9b8kjyda2ycxyq4ea6g4yfpnydxhd52gqba5rb8dw7krkh5mn9p0" }
+# v0.2.16
+# { "Depends": "py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6" }
 """
 Self-Consistency Checker
 ========================
@@ -267,7 +267,7 @@ class Check:
 
 
 class CheckSettled(gl.Event):
-    def __init__(self, check_id: str, /, verdict: str, mask: int): ...
+    def __init__(self, check_id: str, verdict: str, mask: int, /): ...
 
 
 class SelfConsistencyChecker(gl.Contract):
@@ -478,5 +478,5 @@ class SelfConsistencyChecker(gl.Contract):
         record.findings = findings
         record.status = STATUS_EVALUATED
         name = _VERDICT_NAMES[verdict]
-        CheckSettled(cid, verdict=name, mask=mask).emit()
+        CheckSettled(cid, name, mask).emit()
         return name

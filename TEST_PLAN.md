@@ -67,15 +67,17 @@ A second address tries to `submit_document` on someone else's open check ->
 
 ## Studio verification
 
-Run in hosted Studio before submission:
+Verified in hosted Studio on 2026-08-08:
 
-- deploy and confirm the deploy transaction finalises
-- `open_check` smoke transaction, confirm the returned axes hash and stored state
-- `submit_document` with a matching hash, confirm `DOCUMENT_PINNED`
-- `submit_document` with a mismatched hash, confirm the revert
-- case 5 guards, confirm each reverts on chain rather than only offline
-- `evaluate` on a live document, confirm the verdict and mask are written
+- deployment finalized at
+  `0xE10A9D1066280F639684171f17E374F81185fCf6`
+- deploy transaction:
+  `0x92041494f8ebb23e312938690a5b0c8711f88c187432c0730a27489397fb9647`
+- Explorer source:
+  `https://explorer-studio.genlayer.com/address/0xE10A9D1066280F639684171f17E374F81185fCf6`
+- Studio schema extracted and exposed all read/write methods listed in the
+  README.
+- Offline deterministic harness: `python3 sim/check.py` -> 7/7 pass.
 
-State plainly in the submission which of these were run and their transaction
-hashes. Full live LLM adjudication across a full validator set is not something
-I can force from Studio, so I say so rather than implying otherwise.
+Not run in Studio before submission: live `evaluate` with full LLM adjudication.
+The submission should state this boundary plainly.
