@@ -111,16 +111,12 @@ def _json_object(value) -> dict:
         return value
     if isinstance(value, str):
         cleaned = value.replace("```json", "").replace("```", "").strip()
-        parsed = json.loads(cleaned)
+        try:
+            parsed = json.loads(cleaned)
+        except Exception:
+            return {}
         return parsed if isinstance(parsed, dict) else {}
     return {}
-
-
-def _exec_prompt_json(prompt: str) -> dict:
-    try:
-        return _json_object(gl.nondet.exec_prompt(prompt, response_format="json"))
-    except TypeError:
-        return _json_object(gl.nondet.exec_prompt(prompt))
 
 
 def _parse_axes(axes_text: str) -> list[str]:
@@ -185,7 +181,7 @@ no contradiction on that axis. Keep each quote under 120 characters and copy it
 verbatim from the document."""
 
         try:
-            raw = _exec_prompt_json(prompt)
+            raw = _json_object(gl.nondet.exec_prompt(prompt, response_format="json"))
         except Exception:
             return {
                 "ok": False,
