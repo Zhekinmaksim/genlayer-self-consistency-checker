@@ -145,14 +145,15 @@ what was not. Full live LLM adjudication is not simulated offline.
 
 ## Hosted Studio verification
 
-Checked in hosted GenLayer Studio on 2026-08-08.
+Checked in hosted GenLayer Studio on 2026-08-12 after the lint-visible
+`prompt_comparative` callback fix in commit `8e7f1a9`.
 
 - Deployment finalized:
-  `0xE10A9D1066280F639684171f17E374F81185fCf6`
+  `0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
 - Explorer:
-  `https://explorer-studio.genlayer.com/address/0xE10A9D1066280F639684171f17E374F81185fCf6`
+  `https://explorer-studio.genlayer.com/address/0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
 - Deploy transaction:
-  `0x92041494f8ebb23e312938690a5b0c8711f88c187432c0730a27489397fb9647`
+  `0xef2760febd2672827aa448827884a14ac355a4d7b26180adb9e4dafc811c0133`
 - Studio schema loaded with the hosted runner header:
   `# v0.2.16` and
   `py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6`.
