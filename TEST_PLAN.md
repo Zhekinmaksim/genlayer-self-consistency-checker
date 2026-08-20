@@ -67,16 +67,19 @@ A second address tries to `submit_document` on someone else's open check ->
 
 ## Studio verification
 
-Verified in hosted Studio on 2026-08-12 after the lint-visible callback fix:
+Verified in hosted Studio on 2026-08-20 after the comparative callback was
+inlined directly inside `evaluate()`:
 
 - deployment finalized at
-  `0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
+  `0xAa0E282Be73f13BB1A388bB4E4F38Fe2165B9368`
 - deploy transaction:
-  `0xef2760febd2672827aa448827884a14ac355a4d7b26180adb9e4dafc811c0133`
+  `0x502e10a3bc5402985a856a19e8143ba7c634826401d5d1e2071d1d8db6868512`
 - Explorer source:
-  `https://explorer-studio.genlayer.com/address/0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
+  `https://explorer-studio.genlayer.com/address/0xAa0E282Be73f13BB1A388bB4E4F38Fe2165B9368`
 - Studio schema extracted and exposed all read/write methods listed in the
   README.
+- Explorer transaction source contains the inline `judge` callback and no
+  `_judgment_fn` factory.
 - Offline deterministic harness: `python3 sim/check.py` -> 7/7 pass.
 
 Not run in Studio before submission: live `evaluate` with full LLM adjudication.

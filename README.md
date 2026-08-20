@@ -145,24 +145,27 @@ what was not. Full live LLM adjudication is not simulated offline.
 
 ## Hosted Studio verification
 
-Checked in hosted GenLayer Studio on 2026-08-12 after the lint-visible
-`prompt_comparative` callback fix in commit `8e7f1a9`.
+Checked in hosted GenLayer Studio on 2026-08-20 after the comparative callback
+was inlined directly inside `evaluate()` in commit `799c985`.
 
 - Deployment finalized:
-  `0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
+  `0xAa0E282Be73f13BB1A388bB4E4F38Fe2165B9368`
 - Explorer:
-  `https://explorer-studio.genlayer.com/address/0x08FEF3c1b43B1e973d9E57d6e7E207ce86359c74`
+  `https://explorer-studio.genlayer.com/address/0xAa0E282Be73f13BB1A388bB4E4F38Fe2165B9368`
 - Deploy transaction:
-  `0xef2760febd2672827aa448827884a14ac355a4d7b26180adb9e4dafc811c0133`
+  `0x502e10a3bc5402985a856a19e8143ba7c634826401d5d1e2071d1d8db6868512`
 - Studio schema loaded with the hosted runner header:
   `# v0.2.16` and
   `py-genlayer:1jb45aa8ynh2a9c9xn3b7qqh8sm5q93hwfp7jqmwsfhh8jpz09h6`.
 
-The hosted Studio runner accepted this header at schema/deploy time. The current
-SDK docs describe the newer `v0.3.0-rc7` runner, so a future migration should be
-mechanical: update the dependency header and re-check event/schema generation.
-The deployment verification is ABI/schema and deployment finality only; full
-live LLM adjudication was not simulated.
+The Explorer transaction source contains `def judge() -> dict` inside
+`evaluate()`, calls `gl.eq_principle.prompt_comparative(judge, PRINCIPLE)`
+directly, and contains no `_judgment_fn` callback factory. The hosted Studio
+runner accepted this header at schema/deploy time. The current SDK docs describe
+the newer `v0.3.0-rc7` runner, so a future migration should be mechanical:
+update the dependency header and re-check event/schema generation. The
+deployment verification is ABI/schema and deployment finality only; full live
+LLM adjudication was not simulated.
 
 ## Layout
 
